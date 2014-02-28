@@ -1,4 +1,21 @@
-<?php 
+<?php
+//var_dump($_POST);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$name = $_POST["name"];
+	$email = $_POST["email"];
+	$message = $_POST["message"];
+	$email_body = "";
+	$email_body = $email_body . "Name: " . $name . "\n";
+	$email_body = $email_body . "Email: " . $email . "\n";
+	$email_body = $email_body . "Message: " .$message;
+
+// TODO: Send Email
+
+	header("Location: contact.php?status=thanks");
+	exit;
+}
+?><?php 
 $pageTitle = "Contact Mike";
 $section = "contact";
 include('inc/header.php'); ?>
@@ -6,8 +23,12 @@ include('inc/header.php'); ?>
 <div class="section page">
 	<div class="wrapper">
 		<h1>Contact</h1>
-		<p>I&rsquo;d love to hear from you! Complete the form to send me an email.</p>
-		<form method="post" action="contact-process.php">
+
+		<?php if (isset($_GET["status"]) AND $_GET["status"] == "thanks") { ?>
+			<p>Thanks for the email! I &rsquo;ll be in touch shortly.</p>
+		<?php } else { ?>
+			<p>I&rsquo;d love to hear from you! Complete the form to send me an email.</p>
+		<form method="post" action="contact.php">
 			<table>
 				<tr>
 					<th>	
@@ -36,6 +57,7 @@ include('inc/header.php'); ?>
 			</table>
 			<input type="submit" value="Send">
 		</form>
+		<?php } ?>
 	</div>
 </div>
 
