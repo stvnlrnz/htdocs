@@ -2,7 +2,6 @@
 $pageTitle = "Unique T-shirts designed by a frog";
 $section = "home";
 include('inc/header.php'); ?>
-
 		<div class="section banner">
 
 			<div class="wrapper">
@@ -51,6 +50,4 @@ include('inc/header.php'); ?>
 
 		</div>
 
-	</div>
-
-<?php include('inc/footer.php'); ?>
+<?php include('inc/footer.php') ?>
